@@ -20,8 +20,15 @@ namespace RealEstate_00013836.Repository
         // Create
         public async Task CreateAsync(Apartment entity)
         {
-            await _DbContext.Apartments.AddAsync(entity);
-            await _DbContext.SaveChangesAsync();
+            try
+            {
+                await _DbContext.Apartments.AddAsync(entity);
+                await _DbContext.SaveChangesAsync();
+            }
+            catch (Exception err)
+            {
+                await Console.Out.WriteLineAsync(err.ToString());
+            }
         }
 
         // Delete
@@ -30,28 +37,72 @@ namespace RealEstate_00013836.Repository
             var property = await _DbContext.Apartments.FindAsync(id);
             if (property != null)
             {
-                _DbContext.Apartments.Remove(property);
-                await _DbContext.SaveChangesAsync();
+                try
+                {
+                    _DbContext.Apartments.Remove(property);
+                    await _DbContext.SaveChangesAsync();
+                }
+                catch (Exception err)
+                {
+                    await Console.Out.WriteLineAsync(err.ToString());
+                }
+            }
+            else
+            {
+                await Console.Out.WriteLineAsync("Nothing to delete");
             }
         }
 
         // GetAll
         public async Task<IEnumerable<Apartment>> GetAllAsync()
         {
-            return await _DbContext.Apartments.ToArrayAsync();
+            try
+            {
+                var ApartmentsList = await _DbContext.Apartments
+                        .Include(l => l.Location_)
+                        .Include(v => v.Vendor_)
+                        .ToArrayAsync();
+                if (ApartmentsList != null) return ApartmentsList;
+            }
+            catch (Exception err)
+            {
+                await Console.Out.WriteLineAsync(err.ToString());
+            }
+
+            return null;
         }
 
         // Get By Id
         public async Task<Apartment> GetByIdAsync(int id)
         {
-            return await _DbContext.Apartments.FirstOrDefaultAsync(apartment => apartment.Id ==id);
+            try
+            {
+                var apartment = await _DbContext.Apartments
+                       .Include(l => l.Location_)
+                       .Include(v => v.Vendor_)
+                       .FirstOrDefaultAsync(apartment => apartment.Id == id);
+                if (apartment != null) return apartment;
+            }
+            catch (Exception err)
+            {
+                await Console.Out.WriteLineAsync(err.ToString());
+            }
+
+            return null;
         }
 
         // Update
         public async Task UpdateAsync(Apartment entity)
         {
-             _DbContext.Entry(entity).State = EntityState.Modified;
-            await _DbContext.SaveChangesAsync();
+            try
+            {
+                _DbContext.Entry(entity).State = EntityState.Modified;
+                await _DbContext.SaveChangesAsync();
+            }
+            catch (Exception err)
+            {
+                await Console.Out.WriteLineAsync(err.ToString());
+            }
         }
     }
 }

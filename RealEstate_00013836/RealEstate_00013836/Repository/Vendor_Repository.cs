@@ -20,8 +20,15 @@ namespace RealEstate_00013836.Repository
         // Create
         public async Task CreateAsync(Vendor entity)
         {
-            await _DbContext.Vendors.AddAsync(entity);
-            await _DbContext.SaveChangesAsync();
+            try
+            {
+                await _DbContext.Vendors.AddAsync(entity);
+                await _DbContext.SaveChangesAsync();
+            }
+            catch (Exception err)
+            {
+                await Console.Out.WriteLineAsync(err.ToString());
+            }
         }
 
         // Delete
@@ -31,28 +38,66 @@ namespace RealEstate_00013836.Repository
 
             if(vendor != null)
             {
-                 _DbContext.Vendors.Remove(vendor);
-                await _DbContext.SaveChangesAsync();
+                try
+                {
+                    _DbContext.Vendors.Remove(vendor);
+                    await _DbContext.SaveChangesAsync();
+                }
+                catch (Exception err)
+                {
+                    await Console.Out.WriteLineAsync(err.ToString());
+                }
+            }
+            else
+            {
+                await Console.Out.WriteLineAsync("Nothing to delete");
             }
         }
 
         // Get All
         public async Task<IEnumerable<Vendor>> GetAllAsync()
         {
-            return await _DbContext.Vendors.ToArrayAsync();
+            try
+            {
+                var vendors = await _DbContext.Vendors.ToArrayAsync();
+                if (vendors != null) return vendors;
+            }
+            catch (Exception err)
+            {
+                await Console.Out.WriteLineAsync(err.ToString());
+            }
+
+            return null;
         }
 
         // Get By Id
         public async Task<Vendor> GetByIdAsync(int id)
         {
-            return await _DbContext.Vendors.FirstOrDefaultAsync(vendor => vendor.Id == id);
+            try
+            {
+                var vendor = await _DbContext.Vendors.FirstOrDefaultAsync(vendor => vendor.Id == id);
+                if (vendor != null) return vendor;
+            }
+            catch (Exception err)
+            {
+                await Console.Out.WriteLineAsync(err.ToString());
+            }
+
+            return null;
         }
 
         // Update
         public async Task UpdateAsync(Vendor entity)
         {
-            _DbContext.Entry(entity).State = EntityState.Modified;
-            await _DbContext.SaveChangesAsync();
+            try
+            {
+                _DbContext.Entry(entity).State = EntityState.Modified;
+                await _DbContext.SaveChangesAsync();
+            }
+            catch (Exception err)
+            {
+                await Console.Out.WriteLineAsync(err.ToString());
+            }
         }
 
     }

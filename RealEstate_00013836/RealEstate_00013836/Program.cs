@@ -16,8 +16,16 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-builder.Services.AddDbContext<RealEstate_00013836_DbContext>(options =>
-       options.UseSqlServer(builder.Configuration.GetConnectionString(_connStr)));
+try
+{
+	builder.Services.AddDbContext<RealEstate_00013836_DbContext>(options =>
+   options.UseSqlServer(builder.Configuration.GetConnectionString(_connStr)));
+
+}
+catch (Exception err)
+{
+    Console.WriteLine($"Error configuring DbContext: {err.Message}");
+}
 
 // ===========================================================
 // Initializing Repositories
