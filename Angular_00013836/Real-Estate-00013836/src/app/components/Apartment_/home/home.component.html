@@ -1,0 +1,65 @@
+<hr/>
+<br/>
+<button  mat-raised-button  (click) = "CreateNew()">Create new</button>
+<p> </p>
+<br/>
+<hr/>
+<table mat-table [dataSource]="ApartmentList" class="mat-elevation-z8 ApartmentRecords">
+
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="houseTitle">
+    <th mat-header-cell *matHeaderCellDef> House Title </th>
+    <td mat-cell *matCellDef="let element"> {{element.houseTitle}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef> Description </th>
+    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="area">
+    <th mat-header-cell *matHeaderCellDef> Area </th>
+    <td mat-cell *matCellDef="let element"> {{element.area}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef> Price </th>
+    <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="completionDate">
+    <th mat-header-cell *matHeaderCellDef> Completion Date </th>
+    <td mat-cell *matCellDef="let element">{{ formatCompletionDate(element.completionDate) }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="isForRent">
+    <th mat-header-cell *matHeaderCellDef> Is for Rent </th>
+    <td mat-cell *matCellDef="let element"> {{element.isForRent}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="isAvailable">
+    <th mat-header-cell *matHeaderCellDef> Is isAvailable </th>
+    <td mat-cell *matCellDef="let element"> {{element.isAvailable}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Actions">
+    <th mat-header-cell *matHeaderCellDef> Actions </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-raised-button color="primary" (click) = "EditClicked(element.id)">Edit</button>
+      <button mat-raised-button color="accent" (click) = "DetailsClicked(element.id)">Details</button>
+      <button mat-raised-button color="warn" (click) = "DeleteClicked(element.id)">Delete</button>
+    </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+
