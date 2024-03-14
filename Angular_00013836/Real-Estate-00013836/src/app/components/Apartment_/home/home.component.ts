@@ -3,14 +3,16 @@ import {MatTableModule} from '@angular/material/table';
 import { Apartment } from '../../../Models/Apartment';
 import { DatePipe } from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
-import { ServiceRealEstateService } from '../../../service-real-estate.service';
+import { ServiceRealEstateService } from '../../../services/service-real-estate.service';
+import { Router } from '@angular/router';
+import { CreateComponent } from '../create/create.component';
 
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MatTableModule, MatButtonModule],
+  imports: [MatTableModule, MatButtonModule, CreateComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   providers: [DatePipe]
@@ -20,7 +22,9 @@ import { ServiceRealEstateService } from '../../../service-real-estate.service';
 
 export class HomeComponent {
 
- RealEstateService = inject(ServiceRealEstateService)
+  router = inject(Router)
+
+  RealEstateService = inject(ServiceRealEstateService)
   
   @Input() apartments:any;
   
@@ -50,7 +54,7 @@ export class HomeComponent {
   }
 
   CreateNew(){
-    console.log("Create new record clicked")
+    this.router.navigateByUrl("Apartment/Create");
   }
  
 }

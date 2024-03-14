@@ -1,8 +1,7 @@
 <hr/>
-<br/>
-<button  mat-raised-button  (click) = "CreateNew()">Create new</button>
-<p> </p>
-<br/>
+<div mt-4 mb-4>
+  <button mat-flat-button color="primary"  (click)="CreateNew()">Create</button>
+</div>
 <hr/>
 <table mat-table [dataSource]="ApartmentList" class="mat-elevation-z8 ApartmentRecords">
 

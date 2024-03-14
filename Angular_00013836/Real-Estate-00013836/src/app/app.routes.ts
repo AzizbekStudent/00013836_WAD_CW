@@ -3,6 +3,7 @@ import { HomeComponent } from './components/Apartment_/home/home.component';
 import { EditComponent } from './components/Apartment_/edit/edit.component';
 import { DetailsComponent } from './components/Apartment_/details/details.component';
 import { DeleteComponent } from './components/Apartment_/delete/delete.component';
+import { CreateComponent } from './components/Apartment_/create/create.component';
 
 export const routes: Routes = [
     {
@@ -10,19 +11,23 @@ export const routes: Routes = [
         component:HomeComponent
     },
     {
-        path: "home",
+        path: "Apartment/Home",
         component:HomeComponent
     },
     {
-        path: "edit/:id",
+        path: "Apartment/Edit/:id",
         component:EditComponent
     },
     {
-        path: "details/:id",
+        path: "Apartment/Details/:id",
         component:DetailsComponent
     },
     {
-        path: "delete/:id",
+        path: "Apartment/Delete/:id",
         component:DeleteComponent
+    },
+    {
+        path: "Apartment/Create",
+        component:CreateComponent
     },
 ];
