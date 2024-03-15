@@ -1,1 +1,65 @@
-<p>edit works!</p>
+<div class="p-8 mt-8 flex justify-center">
+    <form class="shadow border w-4/12 p-4">
+        <div class="flex">
+            <mat-form-field class="w-full">
+                <mat-label>House title</mat-label>
+                <input matInput name="title" type="text" [(ngModel)]="EditApartmentForm.houseTitle">
+            </mat-form-field>
+        </div>
+        <div class="flex">
+            <mat-form-field class="w-full">
+                <mat-label>Description</mat-label>
+                <textarea matInput name="description" [(ngModel)]="EditApartmentForm.description"></textarea>
+            </mat-form-field>
+        </div>
+        <div class="flex">
+            <mat-form-field class="w-full">
+                <mat-label>Area</mat-label>
+                <input matInput name="area" type="number" [(ngModel)]="EditApartmentForm.area">
+            </mat-form-field>
+        </div>
+        <div class="flex">
+            <mat-form-field class="w-full">
+                <mat-label>Price</mat-label>
+                <input matInput name="price" type="number" [(ngModel)]="EditApartmentForm.price">
+            </mat-form-field>
+        </div>
+        <div class="flex">
+            <mat-form-field class="w-full">
+                <mat-label>Completion Date</mat-label>
+                <input matInput name="completionDate" type="date" [(ngModel)]="EditApartmentForm.completionDate">
+            </mat-form-field>
+        </div>
+        <div class="flex">
+            <mat-checkbox [(ngModel)]="EditApartmentForm.isForRent" name="isForRent">Is for Rent</mat-checkbox>
+        </div>
+        <div class="flex">
+            <mat-checkbox [(ngModel)]="EditApartmentForm.isAvailable" name="isAvailable">Available</mat-checkbox>
+        </div>
+        
+        <div class="flex">
+            <mat-form-field class="w-full">
+                <mat-label>Choose Location</mat-label>
+                <mat-select [(ngModel)]="l_ID" name="location__">
+                    <ng-container *ngFor="let location of location_object">
+                        <mat-option [value]="location.id">{{location.city}} - {{location.region}} - {{location.street}}</mat-option>
+                    </ng-container>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="flex">
+            <mat-form-field class="w-full">
+                <mat-label>Choose Vendor</mat-label>
+                <mat-select [(ngModel)]="v_ID" name="vendor__">
+                    <ng-container *ngFor="let vendor of vendor_Object">
+                        <mat-option [value]="vendor.id">{{vendor.fName}} - {{vendor.lName}}</mat-option>
+                    </ng-container>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        
+        <div class="flex justify-center">
+            <button mat-raised-button color="primary" (click)="EditApartment()"> Save changes</button>
+        </div>
+    </form>
+</div>

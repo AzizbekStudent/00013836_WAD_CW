@@ -1,1 +1,26 @@
-<p>create works!</p>
+<div class="p-8 mt-8 flex justify-center">
+    <form class="shadow border w-4/12 p-4">
+        <div class="flex">
+            <mat-form-field class="w-full">
+                <mat-label>City </mat-label>
+                <input matInput name="title" type="text" [(ngModel)]="newLocation.city">
+            </mat-form-field>
+        </div>
+        <div class="flex">
+            <mat-form-field class="w-full">
+                <mat-label>Region </mat-label>
+                <input matInput name="title" type="text" [(ngModel)]="newLocation.region">
+            </mat-form-field>
+        </div>
+        <div class="flex">
+            <mat-form-field class="w-full">
+                <mat-label>Street </mat-label>
+                <input matInput name="title" type="text" [(ngModel)]="newLocation.street">
+            </mat-form-field>
+        </div>
+        
+        <div class="flex justify-center">
+            <button mat-raised-button color="primary" (click)="CreateNewLocation()"> Create </button>
+        </div>
+    </form>
+</div>

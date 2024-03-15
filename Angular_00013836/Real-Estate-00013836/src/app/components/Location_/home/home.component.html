@@ -1,1 +1,43 @@
-<p>home works!</p>
+<hr/>
+<div mt-4 mb-4>
+  <button mat-flat-button color="primary"  (click)="CreateNew()">Create</button>
+</div>
+<hr/>
+<div class="flex justify-center w-full">
+  <div class="mat-elevation-z8 LocationRecords">
+    <table mat-table [dataSource]="LocationList" class="LocationRecords ">
+      <!-- I think I do not need to display id
+        <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+    -->
+
+      <ng-container matColumnDef="city">
+        <th mat-header-cell *matHeaderCellDef> City  </th>
+        <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="region">
+        <th mat-header-cell *matHeaderCellDef> Region </th>
+        <td mat-cell *matCellDef="let element"> {{element.region}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="street">
+        <th mat-header-cell *matHeaderCellDef> Street </th>
+        <td mat-cell *matCellDef="let element"> {{element.street}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button color="primary" class="m-4" (click)="EditClicked(element.id)">Edit</button>
+          <button mat-raised-button color="accent" class="m-4" (click)="DetailsClicked(element.id)">Details</button>
+          <button mat-raised-button color="warn"  class="m-4" (click)="DeleteClicked(element.id)">Delete</button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>

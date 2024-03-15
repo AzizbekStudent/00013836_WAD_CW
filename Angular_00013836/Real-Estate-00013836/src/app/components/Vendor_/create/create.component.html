@@ -1,1 +1,36 @@
-<p>create works!</p>
+<div class="p-8 mt-8 flex justify-center">
+    <form class="shadow border w-4/12 p-4">
+        <div class="flex">
+            <mat-form-field class="w-full">
+                <mat-label>First Name </mat-label>
+                <input matInput name="title" type="text" [(ngModel)]="newVendor.fName">
+            </mat-form-field>
+        </div>
+        <div class="flex">
+            <mat-form-field class="w-full">
+                <mat-label>Last Name </mat-label>
+                <input matInput name="title" type="text" [(ngModel)]="newVendor.lName">
+            </mat-form-field>
+        </div>
+    <!--
+        <div class="flex">
+            <mat-form-field class="w-full">
+                <mat-label>Age </mat-label>
+                <input matInput name="age" type="number" [(ngModel)]="newVendor.age">
+            </mat-form-field>
+        </div>
+    -->
+        <div class="flex">
+            <mat-form-field class="w-full">
+                <mat-label>Birth Date </mat-label>
+                <input matInput [matDatepicker]="picker" name="birthDate" [(ngModel)]="newVendor.birthDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        
+        <div class="flex justify-center">
+            <button mat-raised-button color="primary" (click)="CreateNewVendor()"> Create </button>
+        </div>
+    </form>
+</div>

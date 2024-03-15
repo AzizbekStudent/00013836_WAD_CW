@@ -42,7 +42,7 @@ export class HomeComponent {
   }
 
   EditClicked(apartmentID: number){
-    console.log(apartmentID, "Edit clicked")
+    this.router.navigateByUrl(`Apartment/Edit/${apartmentID}`);
   }
 
   DeleteClicked(apartmentID: number){
@@ -50,7 +50,7 @@ export class HomeComponent {
   }
 
   DetailsClicked(apartmentID: number){
-    console.log(apartmentID, "Details clicked")
+    this.router.navigateByUrl(`Apartment/Details/${apartmentID}`);
   }
 
   CreateNew(){
