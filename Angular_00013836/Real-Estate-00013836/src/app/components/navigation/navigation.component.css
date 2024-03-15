@@ -1,3 +1,22 @@
-::ng-deep .mat-toolbar.bg-green-300 {
-    background-color: #092a1d; 
-  }
+.toolBar {
+  background-color: #052b2bb5; 
+}
+
+.nav_btn {
+  background-color: #01140db6 !important; 
+  color: white !important;
+  width: 100%;
+  flex-grow: 2;
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  height: 64px; 
+}
+
+.nav_btn:hover {
+  background-color: #00FFFF !important; 
+}
+
+.nav_Btn_Parent {
+  flex-grow: 1;
+}

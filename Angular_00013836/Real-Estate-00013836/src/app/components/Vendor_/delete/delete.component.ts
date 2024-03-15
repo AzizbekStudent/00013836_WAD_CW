@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ServiceVendorService } from '../../../services/service-vendor.service';
+import { ServiceVendorService } from '../../../services/Vendor/service-vendor.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 

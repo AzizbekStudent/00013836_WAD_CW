@@ -1,0 +1,15 @@
+.VendorRecords{
+    margin: 0%, 2%;
+    background-color: rgb(255, 255, 255);
+    
+}
+
+.VendorRecords th{
+    background-color: #01140db6    ; 
+    color: white; 
+}
+
+.action_btn {
+    background-color: #01140db6; 
+    color: white; 
+}

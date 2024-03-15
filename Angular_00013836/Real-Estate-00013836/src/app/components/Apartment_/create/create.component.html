@@ -3,63 +3,72 @@
         <div class="flex">
             <mat-form-field class="w-full">
                 <mat-label>House title</mat-label>
-                <input matInput name="title" type="text" [(ngModel)]="CreateApartmentForm.houseTitle">
+                <input matInput name="houseTitle" type="text" [(ngModel)]="CreateApartmentForm.houseTitle">
             </mat-form-field>
         </div>
+        
         <div class="flex">
             <mat-form-field class="w-full">
                 <mat-label>Description</mat-label>
                 <textarea matInput name="description" [(ngModel)]="CreateApartmentForm.description"></textarea>
             </mat-form-field>
         </div>
+
         <div class="flex">
             <mat-form-field class="w-full">
                 <mat-label>Area</mat-label>
                 <input matInput name="area" type="number" [(ngModel)]="CreateApartmentForm.area">
             </mat-form-field>
         </div>
+
         <div class="flex">
             <mat-form-field class="w-full">
                 <mat-label>Price</mat-label>
                 <input matInput name="price" type="number" [(ngModel)]="CreateApartmentForm.price">
             </mat-form-field>
         </div>
+
         <div class="flex">
             <mat-form-field class="w-full">
                 <mat-label>Completion Date</mat-label>
-                <input matInput name="completionDate" type="date" [(ngModel)]="CreateApartmentForm.completionDate">
+                <input matInput name="completionDate" [matDatepicker]="picker" [(ngModel)]="CreateApartmentForm.completionDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
         </div>
+
         <div class="flex">
-                <mat-checkbox [(ngModel)]="CreateApartmentForm.isForRent">Is for Rent</mat-checkbox>
+            <mat-checkbox name="isForRent" [(ngModel)]="CreateApartmentForm.isForRent">For Rent</mat-checkbox>
         </div>
         <div class="flex">
-                <mat-checkbox [(ngModel)]="CreateApartmentForm.isAvailable">Available</mat-checkbox>
+            <mat-checkbox name="isAvailable" [(ngModel)]="CreateApartmentForm.isAvailable">Is Available</mat-checkbox>
         </div>
+
         <div class="flex">
             <mat-form-field class="w-full">
-                <mat-label>Choose Location</mat-label>
-                <mat-select [(ngModel)]="l_ID" name="location">
-                    @for(l of location_object; track l)
-                    {
-                        <mat-option [value]="l.id">{{l.city}} - {{l.region}} - {{l.street}}</mat-option>
-                    }
+                <mat-label>Location </mat-label>
+                <mat-select name="location_Id" [(ngModel)]="l_ID">
+                  @for (location of locationList; track location){
+                    <mat-option [value]="location.id">{{location.city}} - {{location.region}} - {{location.street}}</mat-option>
+                  }
                 </mat-select>
             </mat-form-field>
         </div>
+
         <div class="flex">
             <mat-form-field class="w-full">
-                <mat-label>Choose Vendor</mat-label>
-                <mat-select [(ngModel)]="v_ID" name="vendor">
-                    @for(v of vendor_Object; track v)
-                    {
-                        <mat-option [value]="v.id">{{v.fName}} - {{v.lName}}</mat-option>
-                    }
+                <mat-label>Vendor </mat-label>
+                <mat-select name="vendor_Id" [(ngModel)]="v_ID">
+                  @for (vendor of vendorList; track vendor){
+                    <mat-option [value]="vendor.id">{{vendor.fName}}  {{vendor.lName}}</mat-option>
+                  }
                 </mat-select>
-            </mat-form-field>    
+
+            </mat-form-field>
         </div>
+
         <div class="flex justify-center">
-            <button mat-raised-button color="primary" (click)="CreateApartment()"> Create</button>
+            <button mat-raised-button color="primary" (click)="CreateApartment()">Create</button>
         </div>
     </form>
 </div>

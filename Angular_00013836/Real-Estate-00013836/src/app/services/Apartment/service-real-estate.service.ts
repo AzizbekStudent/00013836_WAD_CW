@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Apartment } from '../Models/Apartment';
+import { Apartment } from '../../Models/Apartment';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -29,13 +29,4 @@ export class ServiceRealEstateService {
   deleteApartment(id: number){
     return this.httpClient.delete("http://localhost:5085/api/Apartment/Delete/" + id)
   }
-
-  GetAllLocations(){
-    return this.httpClient.get<Apartment[]>("http://localhost:5085/api/Location/GetAll")
-  }
-
-  GetAllVendors(){
-    return this.httpClient.get<Apartment[]>("http://localhost:5085/api/Vendor/GetAll")
-  }
-
 }

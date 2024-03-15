@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
-import { ServiceLocationService } from '../../../services/service-location.service';
+import { ServiceLocationService } from '../../../services/Location/service-location.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

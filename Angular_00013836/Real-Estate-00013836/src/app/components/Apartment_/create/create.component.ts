@@ -1,30 +1,38 @@
 import { Component, inject } from '@angular/core';
-import {MatSelectModule} from '@angular/material/select';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatSelectModule} from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
-import {MatChipsModule} from '@angular/material/chips';
-import { ServiceRealEstateService } from '../../../services/service-real-estate.service';
+import { MatChipsModule } from '@angular/material/chips';
+import { ServiceRealEstateService } from '../../../services/Apartment/service-real-estate.service';
 import { Router } from '@angular/router';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule} from '@angular/material/checkbox';
+import { ServiceLocationService } from '../../../services/Location/service-location.service';
+import { ServiceVendorService } from '../../../services/Vendor/service-vendor.service';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 @Component({
   selector: 'app-create',
   standalone: true,
-  imports: [MatCheckboxModule, MatChipsModule, FormsModule, MatSelectModule, MatInputModule, MatFormFieldModule, MatButtonModule ],
+  imports: [MatNativeDateModule, MatDatepickerModule, MatCheckboxModule, MatChipsModule, 
+    FormsModule, MatSelectModule, MatInputModule, MatFormFieldModule, MatButtonModule ],
   templateUrl: './create.component.html',
   styleUrl: './create.component.css'
 })
 export class CreateComponent {
   ApartmentService = inject(ServiceRealEstateService)
+  LocationService = inject(ServiceLocationService)
+  VendorService = inject(ServiceVendorService)
 
   router = inject(Router)
 
-  vendor_Object: any;
+  vendorList: any
   v_ID: number = 0;
 
-  location_object: any;
+  locationList : any
   l_ID: number = 0;
 
   CreateApartmentForm : any = {
@@ -35,23 +43,30 @@ export class CreateComponent {
     completionDate: null,
     isForRent: false,
     isAvailable: true,
-    locationId: 0,
-    vendorId: 0
+    location_Id: 0,
+    vendor_Id: 0
   }
 
   ngOnInit(){
-    this.ApartmentService.GetAllLocations().subscribe(result => {
-      this.location_object = result
-    } )
-
-    this.ApartmentService.GetAllVendors().subscribe(result => {
-      this.vendor_Object = result
-    } )
+    this.LocationService.getAllLocations().subscribe(
+      result => {
+        this.locationList = result
+      }
+    )
+    this.VendorService.getAllVendor().subscribe(
+      result => {
+        this.vendorList = result
+      }
+    )
   }
 
   CreateApartment(){
-    this.CreateApartmentForm.locationId = this.l_ID
-    this.CreateApartmentForm.vendorId = this.v_ID
+    this.CreateApartmentForm.location_Id = this.l_ID
+    this.CreateApartmentForm.vendor_Id = this.v_ID
+
+    // Checking that form is passing id from select option
+    //console.log(this.l_ID)
+    //console.log(this.v_ID)
 
     this.ApartmentService.createApartment(this.CreateApartmentForm).subscribe(
       result => {

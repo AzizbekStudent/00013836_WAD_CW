@@ -4,7 +4,7 @@ import { MatTableModule } from '@angular/material/table';
 import { Vendor_CreateComponent } from '../create/create.component';
 import { Vendor } from '../../../Models/Vendor';
 import { Router } from '@angular/router';
-import { ServiceVendorService } from '../../../services/service-vendor.service';
+import { ServiceVendorService } from '../../../services/Vendor/service-vendor.service';
 import { DatePipe } from '@angular/common';
 
 @Component({

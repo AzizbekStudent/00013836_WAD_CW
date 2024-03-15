@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ServiceRealEstateService } from '../../../services/service-real-estate.service';
+import { ServiceRealEstateService } from '../../../services/Apartment/service-real-estate.service';
 
 @Component({
   selector: 'app-details',
@@ -12,10 +12,10 @@ import { ServiceRealEstateService } from '../../../services/service-real-estate.
 export class DetailsComponent {
   router = inject(Router)
   ActivatedRouter = inject(ActivatedRoute)
-
   RealEstateService = inject(ServiceRealEstateService)
 
   ApartmentDetails : any = {
+    id: 0,
     houseTitle: "",
     description: "",
     area: 0,
@@ -46,8 +46,12 @@ export class DetailsComponent {
     this.RealEstateService.getByIdApartment(this.ActivatedRouter.snapshot.params["id"]).subscribe(
       result =>{this.ApartmentDetails = result
       
-      this.location_ = result.location
-      this.vendor_ = result.vendor}
+      this.location_ = result.location_
+      this.vendor_ = result.vendor_}
     )
+  }
+
+  navigateBackToList(){
+    this.router.navigateByUrl("Apartment/Home")
   }
 }

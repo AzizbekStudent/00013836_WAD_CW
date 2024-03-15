@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ServiceLocationService } from '../../../services/service-location.service';
+import { ServiceLocationService } from '../../../services/Location/service-location.service';
 import { Router } from '@angular/router';
 
 @Component({

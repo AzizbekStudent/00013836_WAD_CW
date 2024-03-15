@@ -1,11 +1,9 @@
-<hr/>
-<div mt-4 mb-4>
-  <button mat-flat-button color="primary"  (click)="CreateNew()">Create</button>
-</div>
-<hr/>
-<div class="flex justify-center w-full">
+<div class="flex justify-center w-full mt-5">
   <div class="mat-elevation-z8 LocationRecords">
-    <table mat-table [dataSource]="VendorList" class="LocationRecords ">
+    <div mt-4 mb-4 class="w-full bg-black mt-1">
+      <button mat-flat-button color="primary"  class="size-1" (click)="CreateNew()">Create</button>
+    </div>
+    <table mat-table [dataSource]="VendorList" class="VendorRecords ">
       <!-- I think I do not need to display id
         <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef> No. </th>
@@ -35,9 +33,9 @@
 
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef> Actions </th>
-        <td mat-cell *matCellDef="let element">
-          <button mat-raised-button color="primary" class="m-4" (click)="EditClicked(element.id)">Edit</button>
-          <button mat-raised-button color="accent" class="m-4" (click)="DetailsClicked(element.id)">Details</button>
+        <td mat-cell *matCellDef="let element" class="action_btn_container">
+          <button mat-raised-button color="primary" class="action_btn m-4" (click)="EditClicked(element.id)">Edit</button>
+          <button mat-raised-button color="accent" class="action_btn m-4" (click)="DetailsClicked(element.id)">Details</button>
           <button mat-raised-button color="warn"  class="m-4" (click)="DeleteClicked(element.id)">Delete</button>
         </td>
       </ng-container>

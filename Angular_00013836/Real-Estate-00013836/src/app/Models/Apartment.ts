@@ -2,6 +2,8 @@ import { Vendor } from "./Vendor";
 
 // Student ID: 00013836
 export interface Apartment {
+    location_: any;
+    vendor_: any;
     id: number;
     houseTitle: string;
     description: string;

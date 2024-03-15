@@ -1,1 +1,50 @@
-<p>delete works!</p>
+<div class="p-8 mt-8 flex justify-center shadow ">
+    <div class="flex flex-col shadow border w-1/2 p-4 justify-center align-middle bg-green-300 rounded-3xl">
+        <div class="flex w-full justify-between m-4">
+            <span class="font-bold">House Title:</span>
+            <span class="mr-6">{{ ApartmentDetails.houseTitle }}</span>
+        </div>
+        <div class="flex w-full justify-between m-3 mt-7">
+            <span class="font-bold">Description:</span>
+            <span class="mr-6">{{ ApartmentDetails.description }}</span>
+        </div>
+        <div class="flex w-full justify-between m-3 mt-7">
+            <span class="font-bold">Area:</span>
+            <span class="mr-6">{{ ApartmentDetails.area }}</span>
+        </div>
+        <div class="flex w-full justify-between m-3 mt-7">
+            <span class="font-bold">Price:</span>
+            <span class="mr-6">{{ ApartmentDetails.price }}</span>
+        </div>
+        <div class="flex w-full justify-between m-4">
+            <span class="font-bold">Completion Date:</span>
+            <span class="mr-6">{{ ApartmentDetails.completionDate }}</span>
+        </div>
+        <div class="flex w-full justify-between m-4">
+            <span class="font-bold">For Rent:</span>
+            <span class="mr-6">{{ ApartmentDetails.isForRent ? 'Yes' : 'No' }}</span>
+        </div>
+        <div class="flex w-full justify-between m-4">
+            <span class="font-bold">Available:</span>
+            <span class="mr-6">{{ ApartmentDetails.isAvailable ? 'Yes' : 'No' }}</span>
+        </div>
+        <div class="flex w-full justify-between m-4">
+            <span class="font-bold">Location:</span>
+            <span class="mr-6">{{ ApartmentDetails.location_.city }} - {{ ApartmentDetails.location_.region }} - {{ ApartmentDetails.location_.street }}</span>
+        </div>
+        <div class="flex w-full justify-between m-4">
+            <span class="font-bold">Vendor:</span>
+            <span class="mr-6">{{ ApartmentDetails.vendor_.fName }} {{ ApartmentDetails.vendor_.lName }}</span>
+        </div>
+
+        <div class="flex justify-center mt-8">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" (click)="navigateBackToList()">
+                Back to List
+            </button>
+
+            <button class="ml-8 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" (click)="deleteThisApartment(ApartmentDetails)">
+                Delete
+            </button>
+        </div>
+    </div>
+</div>

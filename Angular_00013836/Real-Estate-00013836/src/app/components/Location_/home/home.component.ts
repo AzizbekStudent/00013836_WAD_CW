@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { ServiceLocationService } from '../../../services/service-location.service';
+import { ServiceLocationService } from '../../../services/Location/service-location.service';
 import { Location_CreateComponent } from '../create/create.component';
 
 @Component({

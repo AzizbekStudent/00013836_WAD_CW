@@ -3,9 +3,11 @@ import {MatTableModule} from '@angular/material/table';
 import { Apartment } from '../../../Models/Apartment';
 import { DatePipe } from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
-import { ServiceRealEstateService } from '../../../services/service-real-estate.service';
+import { ServiceRealEstateService } from '../../../services/Apartment/service-real-estate.service';
 import { Router } from '@angular/router';
 import { CreateComponent } from '../create/create.component';
+import { ServiceLocationService } from '../../../services/Location/service-location.service';
+import { ServiceVendorService } from '../../../services/Vendor/service-vendor.service';
 
 
 
@@ -25,7 +27,7 @@ export class HomeComponent {
   router = inject(Router)
 
   RealEstateService = inject(ServiceRealEstateService)
-  
+
   @Input() apartments:any;
   
   ApartmentList: Apartment[] = []
@@ -46,7 +48,7 @@ export class HomeComponent {
   }
 
   DeleteClicked(apartmentID: number){
-    console.log(apartmentID, "Delete clicked")
+    this.router.navigateByUrl(`Apartment/Delete/${apartmentID}`);
   }
 
   DetailsClicked(apartmentID: number){

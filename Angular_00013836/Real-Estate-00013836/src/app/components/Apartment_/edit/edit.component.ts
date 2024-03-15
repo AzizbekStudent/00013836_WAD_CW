@@ -6,32 +6,39 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { ServiceRealEstateService } from '../../../services/service-real-estate.service';
+import { ServiceRealEstateService } from '../../../services/Apartment/service-real-estate.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Apartment } from '../../../Models/Apartment';
+import { ServiceLocationService } from '../../../services/Location/service-location.service';
+import { ServiceVendorService } from '../../../services/Vendor/service-vendor.service';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-edit',
   standalone: true,
-  imports: [CommonModule,MatCheckboxModule, MatChipsModule, FormsModule, MatSelectModule, MatInputModule, MatFormFieldModule, MatButtonModule],
+  imports: [MatNativeDateModule, MatDatepickerModule, CommonModule,MatCheckboxModule, 
+    MatChipsModule, FormsModule, MatSelectModule, MatInputModule, MatFormFieldModule, MatButtonModule],
   templateUrl: './edit.component.html',
   styleUrl: './edit.component.css'
 })
 
 export class EditComponent {
   ApartmentService = inject(ServiceRealEstateService)
+  LocationService = inject(ServiceLocationService)
+  VendorService = inject(ServiceVendorService)
 
   ActivatedRouter = inject(ActivatedRoute)
   router = inject(Router)
 
-  vendor_Object: any;
-  v_ID: any = 0;
+  vendorList: any
+  v_ID: number = 0;
 
-  location_object: any;
-  l_ID: any = 0;
+  locationList : any
+  l_ID: number = 0;
 
-  EditApartmentForm : any = {
+  ChosenApartment : any = {
     id: 0,
     houseTitle: "",
     description: "",
@@ -41,45 +48,41 @@ export class EditComponent {
     isForRent: false,
     isAvailable: true,
     locationId: 0,
-    vendorId: 0
+    location_: {
+      id: 0,
+      city: "",
+      region: "",
+      street: ""
+    },
+    vendorId: 0,
+    vendor_: {
+      fName: "",
+      lName: "",
+      age: 0,
+      birthDate: null
+    }
   }
 
   ngOnInit(){
-    this.ApartmentService.getByIdApartment(this.ActivatedRouter.snapshot.params["id"]).subscribe(
-      result => {
-        this.EditApartmentForm.id = result.id;
-        this.EditApartmentForm.houseTitle = result.houseTitle;
-        this.EditApartmentForm.description = result.description;
-        this.EditApartmentForm.area = result.area;
-        this.EditApartmentForm.price = result.price;
-        this.EditApartmentForm.completionDate = result.completionDate;
-        this.EditApartmentForm.isForRent = result.isForRent;
-        this.EditApartmentForm.isAvailable = result.isAvailable;
-        this.EditApartmentForm.locationId = result.locationId;
-        this.EditApartmentForm.vendorId = result.vendorId;
+    this.LocationService.getAllLocations().subscribe(
+      result => {this.locationList = result}
+    )
 
-        this.location_object = result.location;
-        this.vendor_Object = result.vendor;
+    this.VendorService.getAllVendor().subscribe(
+      result =>{this.vendorList = result}
+    )
 
-        this.v_ID = result.vendorId
-        this.l_ID = result.locationId
-      }
-    );
-
-    this.ApartmentService.GetAllLocations().subscribe(result => {
-      this.location_object = result
-    } )
-
-    this.ApartmentService.GetAllVendors().subscribe(result => {
-      this.vendor_Object = result
-    } )
-    
+    this.ApartmentService.getByIdApartment(this.ActivatedRouter.snapshot.params["id"])
+    .subscribe(result => {this.ChosenApartment = result})
   }
 
   EditApartment(){
     
+    this.ChosenApartment.location_Id = this.l_ID
+    this.ChosenApartment.vendor_Id = this.v_ID
 
-    this.ApartmentService.editApartment(this.EditApartmentForm).subscribe(
+
+    this.ApartmentService.editApartment(this.ChosenApartment).subscribe(
       result => {
         alert(" Apartment is edited")
         this.router.navigateByUrl("Apartment/Home")
