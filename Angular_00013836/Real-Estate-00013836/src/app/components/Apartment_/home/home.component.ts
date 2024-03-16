@@ -34,13 +34,14 @@ export class HomeComponent {
   
   ApartmentList: Apartment[] = []
 
-  searchText: any
+  searchText: string = ""
 
 
   ngOnInit(){
     this.RealEstateService.getAllApartments().subscribe((result) => (this.ApartmentList = result) )
   }
-  displayedColumns: string[] = ['id', 'houseTitle', 'description', 'area', 'price', 'completionDate', 'isForRent', 'isAvailable','Actions'];
+  displayedColumns: string[] = ['id', 'houseTitle', 'description', 'area', 'price', //'completionDate', 'isForRent', 'isAvailable',
+  'Actions'];
   
   constructor(private datePipe: DatePipe) {}
 

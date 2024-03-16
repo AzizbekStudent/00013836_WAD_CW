@@ -9,6 +9,14 @@
     color: white; 
 }
 
+.VendorRecords td{
+    height: 50px; 
+  overflow: hidden;
+  white-space: nowrap; 
+  text-overflow: ellipsis; 
+
+}
+
 .action_btn {
     background-color: #01140db6; 
     color: white; 

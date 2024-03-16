@@ -22,7 +22,7 @@ export class Location_HomeComponent {
 
   locationService = inject(ServiceLocationService)
 
-  searchText: any
+  searchText: string =""
 
   ngOnInit(){
     this.locationService.getAllLocations().subscribe((result) => (this.LocationList = result) )

@@ -23,7 +23,7 @@ export class Vendor_HomeComponent {
 
   vendorService = inject(ServiceVendorService)
 
-  searchText: any
+  searchText: string =""
 
   ngOnInit(){
     this.vendorService.getAllVendor().subscribe((result) => (this.VendorList = result) )
