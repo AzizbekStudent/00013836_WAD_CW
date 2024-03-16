@@ -4,11 +4,13 @@ import { MatTableModule } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ServiceLocationService } from '../../../services/Location/service-location.service';
 import { Location_CreateComponent } from '../create/create.component';
+import { Location_SearchComponent } from '../search/search.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MatTableModule, MatButtonModule, Location_CreateComponent],
+  imports: [Location_SearchComponent, FormsModule, MatTableModule, MatButtonModule, Location_CreateComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -20,6 +22,7 @@ export class Location_HomeComponent {
 
   locationService = inject(ServiceLocationService)
 
+  searchText: any
 
   ngOnInit(){
     this.locationService.getAllLocations().subscribe((result) => (this.LocationList = result) )
@@ -42,5 +45,13 @@ export class Location_HomeComponent {
 
   CreateNew(){
     this.router.navigateByUrl("Location/Create");
+  }
+
+  SearchByInput(textToSearch: string) {
+    if (textToSearch === "") {
+        this.router.navigateByUrl("Location/Home");
+    } else {
+        this.router.navigateByUrl(`Location/Search/${textToSearch}`);
+    }
   }
 }

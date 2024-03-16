@@ -15,6 +15,8 @@ import { Vendor_DetailsComponent } from './components/Vendor_/details/details.co
 import { Vendor_DeleteComponent } from './components/Vendor_/delete/delete.component';
 import { Vendor_CreateComponent } from './components/Vendor_/create/create.component';
 import { SearchComponent } from './components/Apartment_/search/search.component';
+import { Location_SearchComponent } from './components/Location_/search/search.component';
+import { Vendor_SearchComponent } from './components/Vendor_/search/search.component';
 
 export const routes: Routes = [
     {
@@ -67,6 +69,12 @@ export const routes: Routes = [
         component:Location_CreateComponent
     },
     {
+        path: "Location/Search/:string",
+        component:Location_SearchComponent
+    },
+
+    // Vendor routes
+    {
         path: "Vendor/Home",
         component: Vendor_HomeComponent
     },
@@ -85,5 +93,9 @@ export const routes: Routes = [
     {
         path: "Vendor/Create",
         component:Vendor_CreateComponent
+    },
+    {
+        path: "Vendor/Search/:string",
+        component:Vendor_SearchComponent
     }
 ];

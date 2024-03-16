@@ -1,0 +1,50 @@
+<div class="flex justify-center w-full mt-5">
+    <div class="flex flex-col mat-elevation-z8 w-3/4">
+      <div mt-4 mb-4 class="w-full btn_container flex justify-between">
+        <button mat-flat-button color="primary" class="createBtn w-1/4" (click)="CreateNew()">Create</button>
+        
+        <input type="text" placeholder="Search..." class="searchInput w-4/5" [(ngModel)]="searchText">
+        <button mat-icon-button class="search_Btn w-1/5" (click)="SearchByInput(searchText)">Search</button>
+      </div>
+      <table mat-table [dataSource]="VendorList" class="VendorRecords ">
+  
+        <!-- I think I do not need to display id
+          <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+      -->
+  
+        <ng-container matColumnDef="fName">
+          <th mat-header-cell *matHeaderCellDef> First Name  </th>
+          <td mat-cell *matCellDef="let element"> {{element.fName}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="lName">
+          <th mat-header-cell *matHeaderCellDef> Last Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.lName}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="age">
+          <th mat-header-cell *matHeaderCellDef> Age </th>
+          <td mat-cell *matCellDef="let element"> {{ element.age }} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="birthDate">
+          <th mat-header-cell *matHeaderCellDef> Birth Date </th>
+          <td mat-cell *matCellDef="let element"> {{formatCompletionDate(element.birthDate) }}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef style="width: 30%;"> Actions </th>
+          <td mat-cell *matCellDef="let element" style="width: 30%;" class="action_btn_container">
+            <button mat-raised-button color="primary" class="action_btn ml-2" (click)="EditClicked(element.id)">Edit</button>
+            <button mat-raised-button color="accent" class="action_btn ml-2" (click)="DetailsClicked(element.id)">Details</button>
+            <button mat-raised-button color="warn"  class="ml-2" (click)="DeleteClicked(element.id)">Delete</button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </div>

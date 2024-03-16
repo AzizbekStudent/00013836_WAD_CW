@@ -1,32 +1,56 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { Vendor_CreateComponent } from '../create/create.component';
-import { Vendor } from '../../../Models/Vendor';
-import { Router } from '@angular/router';
+import { MatInputModule } from '@angular/material/input';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ServiceVendorService } from '../../../services/Vendor/service-vendor.service';
+import { Vendor } from '../../../Models/Vendor';
 import { DatePipe } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-search',
   standalone: true,
-  imports: [Vendor_CreateComponent, FormsModule,  MatTableModule, MatButtonModule, Vendor_CreateComponent],
-  providers:[DatePipe],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  imports: [FormsModule, MatTableModule, MatButtonModule, 
+    Vendor_CreateComponent, MatInputModule],
+  providers: [DatePipe],
+  templateUrl: './search.component.html',
+  styleUrl: './search.component.css'
 })
-export class Vendor_HomeComponent {
-  VendorList: Vendor[] =[]
-
+export class Vendor_SearchComponent {
   router = inject(Router)
 
   vendorService = inject(ServiceVendorService)
+  ActivatedRouter = inject(ActivatedRoute)
+
+  @Input() apartments:any;
+
+  VendorList: Vendor[] = []
 
   searchText: any
 
   ngOnInit(){
-    this.vendorService.getAllVendor().subscribe((result) => (this.VendorList = result) )
+
+    this.ActivatedRouter.params.subscribe(params => {
+      this.searchText = params['string']; 
+      this.VendorList = this.filterResults(); 
+    });
+    console.log(this.searchText)
+
+  }
+
+  filterResults(): any {
+    if (this.searchText === "") {
+      this.router.navigateByUrl("Vendor/Home");
+    } else {
+      this.vendorService.getAllVendor().subscribe((result: any) => {
+        this.VendorList = (result as Vendor[]).filter(v =>
+          v.fName.toLowerCase().includes(this.searchText.toLowerCase()) ||
+          v.lName.toLowerCase().includes(this.searchText.toLowerCase()) 
+        );
+      });
+    }
   }
 
   constructor(private datePipe: DatePipe) {}
