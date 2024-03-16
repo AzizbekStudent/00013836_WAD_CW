@@ -1,34 +1,28 @@
 import { Component, Input, inject } from '@angular/core';
-import {MatTableModule} from '@angular/material/table';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ServiceRealEstateService } from '../../../services/Apartment/service-real-estate.service';
 import { Apartment } from '../../../Models/Apartment';
 import { DatePipe } from '@angular/common';
-import {MatButtonModule} from '@angular/material/button';
-import { ServiceRealEstateService } from '../../../services/Apartment/service-real-estate.service';
-import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
 import { CreateComponent } from '../create/create.component';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
-import { SearchComponent } from '../search/search.component';
-
-
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-search',
   standalone: true,
-  imports: [SearchComponent, FormsModule, MatTableModule, MatButtonModule, 
+  imports: [FormsModule, MatTableModule, MatButtonModule, 
     CreateComponent, MatInputModule],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
-  providers: [DatePipe]
+  providers: [DatePipe],
+  templateUrl: './search.component.html',
+  styleUrl: './search.component.css'
 })
-
-
-
-export class HomeComponent {
-
+export class SearchComponent {
   router = inject(Router)
 
   RealEstateService = inject(ServiceRealEstateService)
+  ActivatedRouter = inject(ActivatedRoute)
 
   @Input() apartments:any;
   
@@ -36,10 +30,29 @@ export class HomeComponent {
 
   searchText: any
 
-
   ngOnInit(){
-    this.RealEstateService.getAllApartments().subscribe((result) => (this.ApartmentList = result) )
+
+    this.ActivatedRouter.params.subscribe(params => {
+      this.searchText = params['string']; 
+      this.ApartmentList = this.filterResults(); 
+    });
+    console.log(this.searchText)
+
   }
+
+  filterResults(): any {
+    if (this.searchText === "") {
+      this.router.navigateByUrl("Apartment/Home");
+    }else{
+      this.RealEstateService.getAllApartments().subscribe((result: Apartment[]) => {
+        this.ApartmentList = result.filter(apartment =>
+          apartment.houseTitle.toLowerCase().includes(this.searchText.toLowerCase()) ||
+          apartment.description.toLowerCase().includes(this.searchText.toLowerCase())
+        );
+      });
+    }
+  }
+
   displayedColumns: string[] = ['id', 'houseTitle', 'description', 'area', 'price', 'completionDate', 'isForRent', 'isAvailable','Actions'];
   
   constructor(private datePipe: DatePipe) {}
