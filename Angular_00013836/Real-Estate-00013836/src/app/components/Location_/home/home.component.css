@@ -3,9 +3,6 @@
     background-color: rgb(255, 255, 255);
     
 }
-.LocationRecords > div {
-    margin-top: -1px;
-  }
 
 .LocationRecords th{
     background-color: #01140db6    ; 
@@ -15,4 +12,21 @@
 .action_btn {
     background-color: #01140db6; 
     color: white; 
+    border: 2px solid #01140db6;
+    transition: all 0.3s ease;
+}
+
+.action_btn:hover {
+    background-color: #11231d; 
+    color: #08ffa4;
+    border-color: #11231d; 
+    transform: scale(1.05);
+}
+
+.btn_container{
+    background-color: transparent;
+}
+
+.createBtn{
+    background-color: #022116; 
 }

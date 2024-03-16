@@ -1,0 +1,18 @@
+.CreateForm{
+    background-color: #d4d4d4da; 
+    color: white;
+}
+
+.action_btn {
+    background-color: #01140db6; 
+    color: white; 
+    border: 2px solid #01140db6;
+    transition: all 0.3s ease;
+}
+
+.action_btn:hover {
+    background-color: #11231d; 
+    color: #08ffa4;
+    border-color: #11231d; 
+    transform: scale(1.05);
+}

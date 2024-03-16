@@ -1,24 +1,24 @@
 <div class="p-8 mt-8 flex justify-center shadow">
-    <div class="flex flex-col shadow border w-1/3 p-4 justify-center align-middle bg-green-300 rounded-3xl">
+    <div class="DetailsPage flex flex-col shadow border w-1/3 p-4 justify-center align-middle bg-green-300 rounded-3xl">
         <div class="flex w-full justify-between m-4">
-            <span class="font-bold">ID:</span>
-            <span class="mr-6">{{ LocationDetails.id }}</span>
+            <span class="font-bold w-1/2">ID:</span>
+            <span class="mr-6 w-1/2">{{ LocationDetails.id }}</span>
         </div>
         <div class="flex w-full justify-between m-3 mt-7">
-            <span class="font-bold">City:</span>
-            <span class="mr-6">{{ LocationDetails.city }}</span>
+            <span class="font-bold w-1/2">City:</span>
+            <span class="mr-6 w-1/2">{{ LocationDetails.city }}</span>
         </div>
         <div class="flex w-full justify-between m-3 mt-7">
-            <span class="font-bold">Region:</span>
-            <span class="mr-6">{{ LocationDetails.region }}</span>
+            <span class="font-bold w-1/2">Region:</span>
+            <span class="mr-6 w-1/2">{{ LocationDetails.region }}</span>
         </div>
         <div class="flex w-full justify-between m-3 mt-7">
-            <span class="font-bold">Street:</span>
-            <span class="mr-6">{{ LocationDetails.street }}</span>
+            <span class="font-bold w-1/2">Street:</span>
+            <span class="mr-6 w-1/2">{{ LocationDetails.street }}</span>
         </div>
 
         <div class="flex justify-center mt-8">
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" (click)="navigateBackToList()">
+            <button class="action_btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" (click)="navigateBackToList()">
                 Back to List
             </button>
         </div>
