@@ -64,4 +64,9 @@
     transform: scale(1.05);
 }
 
-
+.filter-container {
+    background-color: #92118e87;
+    padding: 10px;
+    color: rgba(172, 172, 172, 0.714);
+    border-radius: 5px;
+}

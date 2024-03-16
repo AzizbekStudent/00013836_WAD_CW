@@ -9,6 +9,9 @@ import { CreateComponent } from '../create/create.component';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { SearchComponent } from '../search/search.component';
+import { MatSortModule, Sort } from '@angular/material/sort';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { SelectionModel } from '@angular/cdk/collections';
 
 
 
@@ -16,7 +19,7 @@ import { SearchComponent } from '../search/search.component';
   selector: 'app-home',
   standalone: true,
   imports: [SearchComponent, FormsModule, MatTableModule, MatButtonModule, 
-    CreateComponent, MatInputModule],
+    CreateComponent, MatInputModule, MatCheckboxModule ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   providers: [DatePipe]
@@ -36,6 +39,9 @@ export class HomeComponent {
 
   searchText: string = ""
 
+  showAvailableOnly: boolean = false;
+
+  showForRentOnly: boolean = false;
 
   ngOnInit(){
     this.RealEstateService.getAllApartments().subscribe((result) => (this.ApartmentList = result) )
@@ -72,4 +78,23 @@ export class HomeComponent {
         this.router.navigateByUrl(`Apartment/Search/${textToSearch}`);
     }
   }
+
+  filterByAvailability() {
+    if (this.showAvailableOnly) {
+      this.ApartmentList = this.ApartmentList.filter(apartment => apartment.isAvailable);
+    } else {
+      this.RealEstateService.getAllApartments().subscribe((result) => (this.ApartmentList = result));
+    }
+  }
+
+  filterByRentability() {
+    if (this.showForRentOnly) {
+      this.ApartmentList = this.ApartmentList.filter(apartment => apartment.isForRent);
+    } else {
+      this.RealEstateService.getAllApartments().subscribe((result) => (this.ApartmentList = result));
+    }
+  }
+
 }
+
+

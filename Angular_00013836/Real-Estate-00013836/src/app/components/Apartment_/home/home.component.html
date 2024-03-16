@@ -6,11 +6,17 @@
       <input type="text" placeholder="Search..." class="searchInput w-4/5" [(ngModel)]="searchText">
       <button mat-icon-button class="search_Btn w-1/5" (click)="SearchByInput(searchText)">Search</button>
     </div>
-    <table mat-table [dataSource]="ApartmentList" class="ApartmentRecords w-full">
 
+    <div class="flex filter-container">
+      <mat-checkbox  [(ngModel)]="showAvailableOnly" class="custom-checkbox" (change)="filterByAvailability()">Show Available Only</mat-checkbox>
+      <mat-checkbox  [(ngModel)]="showForRentOnly" class="custom-checkbox ml-4" (change)="filterByRentability()">Show For Rent Only</mat-checkbox>
+    </div>
+
+    <table mat-table  [dataSource]="ApartmentList" class="ApartmentRecords w-full">
+      
       <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef style="width: 5%;"> No. </th>
-        <td mat-cell *matCellDef="let element " style="width: 5%;"> {{element.id}} </td>
+        <th mat-header-cell *matHeaderCellDef style="width: 10%;"> No. </th>
+        <td mat-cell *matCellDef="let element " style="width: 10%;"> {{element.id}} </td>
       </ng-container>
 
       <ng-container matColumnDef="houseTitle">
