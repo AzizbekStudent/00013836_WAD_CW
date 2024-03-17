@@ -5,6 +5,7 @@ import { ServiceLocationService } from '../../../services/Location/service-locat
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
+  // Student ID: 00013836
   selector: 'app-details',
   standalone: true,
   imports: [MatChipsModule, MatCardModule],
@@ -12,6 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './details.component.css'
 })
 export class Location_DetailsComponent {
+  // Student ID: 00013836
    LocationDetails : any={
     id:0,
     city:"",

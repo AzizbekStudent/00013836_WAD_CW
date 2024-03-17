@@ -3,6 +3,7 @@ import { ServiceLocationService } from '../../../services/Location/service-locat
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
+  // Student ID: 00013836
   selector: 'app-delete',
   standalone: true,
   imports: [],
@@ -10,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './delete.component.css'
 })
 export class Location_DeleteComponent {
+  // Student ID: 00013836
   
   LocationDetails : any={
     id:0,

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ServiceRealEstateService } from '../../../services/Apartment/service-real-estate.service';
 
 @Component({
+  // Student ID: 00013836
   selector: 'app-details',
   standalone: true,
   imports: [],
@@ -10,6 +11,7 @@ import { ServiceRealEstateService } from '../../../services/Apartment/service-re
   styleUrl: './details.component.css'
 })
 export class DetailsComponent {
+  // Student ID: 00013836
   router = inject(Router)
   ActivatedRouter = inject(ActivatedRoute)
   RealEstateService = inject(ServiceRealEstateService)

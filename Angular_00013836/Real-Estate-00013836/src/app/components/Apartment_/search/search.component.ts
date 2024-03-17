@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckbox } from '@angular/material/checkbox';
 
 @Component({
+  // Student ID: 00013836
   selector: 'app-search',
   standalone: true,
   imports: [FormsModule, MatTableModule, MatButtonModule, 
@@ -20,6 +21,7 @@ import { MatCheckbox } from '@angular/material/checkbox';
   styleUrl: './search.component.css'
 })
 export class SearchComponent {
+  // Student ID: 00013836
   router = inject(Router)
 
   RealEstateService = inject(ServiceRealEstateService)

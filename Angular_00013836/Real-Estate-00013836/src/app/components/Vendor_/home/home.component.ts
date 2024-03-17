@@ -9,6 +9,7 @@ import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
+  // Student ID: 00013836
   selector: 'app-home',
   standalone: true,
   imports: [Vendor_CreateComponent, FormsModule,  MatTableModule, MatButtonModule, Vendor_CreateComponent],
@@ -17,6 +18,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './home.component.css'
 })
 export class Vendor_HomeComponent {
+  // Student ID: 00013836
   VendorList: Vendor[] =[]
 
   router = inject(Router)

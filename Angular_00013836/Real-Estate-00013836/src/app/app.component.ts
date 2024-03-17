@@ -5,6 +5,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { HomeComponent } from './components/Apartment_/home/home.component';
 
 @Component({
+  // Student ID: 00013836
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, NavigationComponent, CommonModule],
@@ -14,5 +15,6 @@ import { HomeComponent } from './components/Apartment_/home/home.component';
 
 
 export class AppComponent {
+  // Student ID: 00013836
   title = 'Real-Estate-00013836';
 }

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 
 @Component({
+  // Student ID: 00013836
   selector: 'app-details',
   standalone: true,
   imports: [],
@@ -12,6 +13,7 @@ import { DatePipe } from '@angular/common';
   styleUrl: './details.component.css'
 })
 export class Vendor_DetailsComponent {
+  // Student ID: 00013836
   VendorDetails : any={
     id:0,
     fName:"",

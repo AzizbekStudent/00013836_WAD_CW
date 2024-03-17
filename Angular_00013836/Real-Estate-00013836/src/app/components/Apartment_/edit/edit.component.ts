@@ -16,6 +16,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @Component({
+  // Student ID: 00013836
   selector: 'app-edit',
   standalone: true,
   imports: [MatNativeDateModule, MatDatepickerModule, CommonModule,MatCheckboxModule, 
@@ -25,6 +26,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 })
 
 export class EditComponent {
+  // Student ID: 00013836
   ApartmentService = inject(ServiceRealEstateService)
   LocationService = inject(ServiceLocationService)
   VendorService = inject(ServiceVendorService)

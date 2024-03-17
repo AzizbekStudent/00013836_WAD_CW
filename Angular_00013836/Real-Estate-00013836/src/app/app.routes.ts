@@ -19,6 +19,7 @@ import { Location_SearchComponent } from './components/Location_/search/search.c
 import { Vendor_SearchComponent } from './components/Vendor_/search/search.component';
 
 export const routes: Routes = [
+    // Student ID: 00013836
     {
         path: "",
         component:HomeComponent

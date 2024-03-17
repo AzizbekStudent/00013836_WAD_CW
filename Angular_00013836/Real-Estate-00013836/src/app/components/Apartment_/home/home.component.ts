@@ -16,6 +16,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 
 
 @Component({
+  // Student ID: 00013836
   selector: 'app-home',
   standalone: true,
   imports: [SearchComponent, FormsModule, MatTableModule, MatButtonModule, 
@@ -28,7 +29,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 
 
 export class HomeComponent {
-
+  // Student ID: 00013836
   router = inject(Router)
 
   RealEstateService = inject(ServiceRealEstateService)

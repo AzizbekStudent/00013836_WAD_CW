@@ -10,6 +10,7 @@ import { Vendor } from '../../../Models/Vendor';
 import { DatePipe } from '@angular/common';
 
 @Component({
+  // Student ID: 00013836
   selector: 'app-search',
   standalone: true,
   imports: [FormsModule, MatTableModule, MatButtonModule, 
@@ -19,6 +20,7 @@ import { DatePipe } from '@angular/common';
   styleUrl: './search.component.css'
 })
 export class Vendor_SearchComponent {
+  // Student ID: 00013836
   router = inject(Router)
 
   vendorService = inject(ServiceVendorService)

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 
 @Component({
+  // Student ID: 00013836
   selector: 'app-delete',
   standalone: true,
   imports: [],
@@ -12,6 +13,7 @@ import { DatePipe } from '@angular/common';
   styleUrl: './delete.component.css'
 })
 export class Vendor_DeleteComponent {
+  // Student ID: 00013836
   VendorDetails : any={
     id:0,
     fName:"",

@@ -8,6 +8,7 @@ import { ServiceLocationService } from '../../../services/Location/service-locat
 import { Router } from '@angular/router';
 
 @Component({
+  // Student ID: 00013836
   selector: 'app-create',
   standalone: true,
   imports: [ MatChipsModule, FormsModule,  MatInputModule, MatFormFieldModule, MatButtonModule],
@@ -15,6 +16,7 @@ import { Router } from '@angular/router';
   styleUrl: './create.component.css'
 })
 export class Location_CreateComponent {
+  // Student ID: 00013836
   locationService = inject(ServiceLocationService)
 
   router = inject(Router)

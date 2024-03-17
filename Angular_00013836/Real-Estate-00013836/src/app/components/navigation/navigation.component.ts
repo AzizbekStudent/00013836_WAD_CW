@@ -8,6 +8,7 @@ import { Location_HomeComponent } from '../Location_/home/home.component';
 import { Vendor_HomeComponent } from '../Vendor_/home/home.component';
 
 @Component({
+  // Student ID: 00013836
   selector: 'app-navigation',
   standalone: true,
   imports: [MatIconModule, MatButtonModule, MatToolbarModule, HomeComponent, Location_HomeComponent, Vendor_HomeComponent],
@@ -15,6 +16,7 @@ import { Vendor_HomeComponent } from '../Vendor_/home/home.component';
   styleUrl: './navigation.component.css'
 })
 export class NavigationComponent {
+  // Student ID: 00013836
     router = inject(Router)
 
     ApartmentClick(){

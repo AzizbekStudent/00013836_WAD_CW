@@ -9,6 +9,7 @@ import { ServiceLocationService } from '../../../services/Location/service-locat
 import { Location } from '../../../Models/Location';
 
 @Component({
+  // Student ID: 00013836
   selector: 'app-search',
   standalone: true,
   imports: [FormsModule, MatTableModule, MatButtonModule, 
@@ -17,6 +18,7 @@ import { Location } from '../../../Models/Location';
   styleUrl: './search.component.css'
 })
 export class Location_SearchComponent {
+  // Student ID: 00013836
   router = inject(Router)
 
   LocationService = inject(ServiceLocationService)

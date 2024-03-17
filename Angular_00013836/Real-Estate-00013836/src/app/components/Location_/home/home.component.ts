@@ -8,6 +8,7 @@ import { Location_SearchComponent } from '../search/search.component';
 import { FormsModule } from '@angular/forms';
 
 @Component({
+  // Student ID: 00013836
   selector: 'app-home',
   standalone: true,
   imports: [Location_SearchComponent, FormsModule, MatTableModule, MatButtonModule, Location_CreateComponent],
@@ -15,6 +16,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './home.component.css'
 })
 export class Location_HomeComponent {
+  // Student ID: 00013836
 
   LocationList: Location[] = []
   
