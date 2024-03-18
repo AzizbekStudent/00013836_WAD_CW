@@ -39,7 +39,7 @@ namespace RealEstate_00013836.Controllers
 
         // Get By Id
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(Location), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Vendor), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetById(int id)
         {
